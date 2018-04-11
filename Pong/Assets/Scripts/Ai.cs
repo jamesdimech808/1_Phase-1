@@ -39,7 +39,12 @@ public class Ai : MonoBehaviour {
 		// check if the user is pressing Up or Down
 
 		if (Input.GetKey (KeyCode.UpArrow)) {
-			if (transform.localPosition.y > topBounds) {
+
+			
+			//Part 4 - added an '=' with the '>' to keep the paddle...
+			//from bouncing when the player holds the up key at the...
+			//boundary limit.
+			if (transform.localPosition.y >= topBounds) {
 				
 				//check to see if while we are moving up, 
 				//if we are passed the topBounds. 
@@ -54,7 +59,12 @@ public class Ai : MonoBehaviour {
 		} else if (Input.GetKey (KeyCode.DownArrow)) {
 
 			//opposite for the bottom boundary
-			if (transform.localPosition.y < bottomBounds) {
+
+
+			//Part 4 - added an '=' with the '<' to keep the paddle...
+			//from bouncing when the player holds the down key at the...
+			//boundary limit.
+			if (transform.localPosition.y <= bottomBounds) {
 				
 				transform.localPosition = new Vector3 (transform.localPosition.x, bottomBounds, transform.localPosition.z);
 			
