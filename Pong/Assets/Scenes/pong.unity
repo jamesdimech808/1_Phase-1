@@ -229,7 +229,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114427201126774136, guid: bf8988a0cc0db8640b0d3ad410667a52, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bf8988a0cc0db8640b0d3ad410667a52, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1063985708 stripped
@@ -245,9 +246,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1063985708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57511e4732c725440a3b4157d22fa6f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 89839ea3e2f008b44b6b1750ff843b70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 8
+  topBounds: 8.3
+  bottomBounds: -8.3
+  startingPosition: {x: -13, y: 0}
 --- !u!1 &1457340121
 GameObject:
   m_ObjectHideFlags: 0
