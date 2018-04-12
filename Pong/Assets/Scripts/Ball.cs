@@ -79,13 +79,13 @@ public class Ball : MonoBehaviour {
 
 			}
 		}
-
-		if (transform.localPosition.x + ballWidth /1.8f > aiPaddleMaxX && transform.localPosition.x - ballWidth /1.8f < aiPaddleMinX){
+		//this will check if the ball collides with the ai_paddle. 
+		if (transform.localPosition.x + ballWidth / 1.8f > aiPaddleMaxX && transform.localPosition.x - ballWidth / 1.8f < aiPaddleMinX){
 
 			if (transform.localPosition.x - ballHeight / 1.8f < aiPaddleMaxY && transform.localPosition.y + ballHeight / 1.8f > aiPaddleMinY){
 
 				ballDirection = Vector2.left;
-				transform.localPosition = new Vector3 (aiPaddleMaxX - ballWidth /1.8f, transform.localPosition.y, transform.localPosition.z);
+				transform.localPosition = new Vector3 (aiPaddleMaxX - ballWidth / 1.8f, transform.localPosition.y, transform.localPosition.z);
 				return true;
 			}
 		}
