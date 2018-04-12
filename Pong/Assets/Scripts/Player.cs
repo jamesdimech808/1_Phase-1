@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-	//Variables to determine the Movement speed, Top and Bottom boundaries...
+	//Part 1 - Variables to determine the Movement speed, Top and Bottom boundaries...
 	//and the Starting Position. 
 
 	public float moveSpeed = 8.0f;
