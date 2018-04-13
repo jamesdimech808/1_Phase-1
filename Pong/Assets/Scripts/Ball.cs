@@ -27,6 +27,8 @@ public class Ball : MonoBehaviour {
 	//maximum angle of deflection our ball is allowed to travel in
 	private float maxAngle = 45.0f;
 
+	private bool collidedWithPlayer, collidedWithAi, collidedWithWall;
+
 	// Use this for initialization
 	void Start () {
 
@@ -92,6 +94,7 @@ public class Ball : MonoBehaviour {
 
 				//tell the ball to go right when it collides with the playerpaddle. 
 				ballDirection = Vector2.right;
+				collidedWithPlayer = true;
 				//make sure the ball does not change direction from the inside of the paddle
 				transform.localPosition = new Vector3 (playerPaddleMaxX + ballWidth / 1.8f, transform.localPosition.y, transform.localPosition.z);
 				return true;
@@ -104,6 +107,7 @@ public class Ball : MonoBehaviour {
 			if (transform.localPosition.y - ballHeight / 1.8f < aiPaddleMaxY && transform.localPosition.y + ballHeight / 1.8f > aiPaddleMinY){
 
 				ballDirection = Vector2.left;
+				collidedWithAi = true;
 				transform.localPosition = new Vector3 (aiPaddleMaxX - ballWidth / 1.8f, transform.localPosition.y, transform.localPosition.z);
 				return true;
 			}
@@ -120,7 +124,7 @@ public class Ball : MonoBehaviour {
 			vx = moveSpeed * Mathf.Cos (bounceAngle);
 			
 			//for y - caluclate the angle based on whether the movement speed is positive or negative. 
-			if (moveSpeed < 0)
+			if (moveSpeed > 0)
 				vy = moveSpeed * -Mathf.Sin (bounceAngle);
 			else 
 				vy = moveSpeed * Mathf.Sin (bounceAngle);
@@ -134,7 +138,27 @@ public class Ball : MonoBehaviour {
 			 if (moveSpeed < 0)
 				moveSpeed = -1 * moveSpeed; 
 
-			float relativeIntersectY =  paddlePlayer.transform.localPosition.y - transform.localPosition.y;	
+			//check to see if collide with player is true
+			if(collidedWithPlayer) {
+
+				//make it false because it wont be colliding in the next frame	
+				collidedWithPlayer = false;
+				float relativeIntersectY =  paddlePlayer.transform.localPosition.y - transform.localPosition.y;	
+				float normalizeRelativeIntersectionY = (relativeIntersectY / (playerPaddleHeight /2));
+
+				bounceAngle = normalizeRelativeIntersectionY * (maxAngle * Mathf.Deg2Rad);
+			
+			} else if (collidedWithAi) {
+
+				//make it false because it wont be colliding in the next frame	
+				collidedWithAi = false;
+				float relativeIntersectY =  paddleAi.transform.localPosition.y - transform.localPosition.y;	
+				float normalizeRelativeIntersectionY = (relativeIntersectY / (playerPaddleHeight /2));
+
+				bounceAngle = normalizeRelativeIntersectionY * (maxAngle * Mathf.Deg2Rad);
+				
+
+			}
 		}
 	}
 
