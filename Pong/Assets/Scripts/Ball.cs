@@ -13,6 +13,10 @@ public class Ball : MonoBehaviour {
 	//Have the ball move left when initiated. 
 	public Vector2 ballDirection = Vector2.left;
 
+	public float topBounds = 5.875f;
+	
+	public float bottomBounds = -5.875f;
+
 	//variables to help set up the prefabs for collisions etc...
 	private float playerPaddleHeight, playerPaddleWidth, aiPaddleHeight, aiPaddleWidth, playerPaddleMaxX, playerPaddleMaxY, playerPaddleMinX, playerPaddleMinY, aiPaddleMaxX, aiPaddleMaxY, aiPaddleMinX, aiPaddleMinY, ballWidth, ballHeight;
 
@@ -112,6 +116,18 @@ public class Ball : MonoBehaviour {
 				return true;
 			}
 		}
+		//top bounds collision detection
+		if (transform.localPosition.y > topBounds) {
+
+			transform.localPosition = new Vector3 (transform.localPosition.x, topBounds, transform.localPosition.z);
+			collidedWithWall = true;
+		
+		}
+
+		if (transform.localPosition.y < bottomBounds) {
+			transform.localPosition = new Vector3 (transform.localPosition.x, bottomBounds, transform.localPosition.z);
+			collidedWithWall = true;
+		}
 
 		return false;
 	}
@@ -158,6 +174,10 @@ public class Ball : MonoBehaviour {
 				bounceAngle = normalizeRelativeIntersectionY * (maxAngle * Mathf.Deg2Rad);
 				
 
+			} else if (collidedWithWall) {
+				collidedWithWall = false;
+
+				bounceAngle = -bounceAngle;
 			}
 		}
 	}
