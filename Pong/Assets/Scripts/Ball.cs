@@ -144,7 +144,7 @@ public class Ball : MonoBehaviour {
 				//make it false because it wont be colliding in the next frame	
 				collidedWithPlayer = false;
 				float relativeIntersectY =  paddlePlayer.transform.localPosition.y - transform.localPosition.y;	
-				float normalizeRelativeIntersectionY = (relativeIntersectY / (playerPaddleHeight /2));
+				float normalizeRelativeIntersectionY = (relativeIntersectY / (playerPaddleHeight /1.8f));
 
 				bounceAngle = normalizeRelativeIntersectionY * (maxAngle * Mathf.Deg2Rad);
 			
@@ -153,7 +153,7 @@ public class Ball : MonoBehaviour {
 				//make it false because it wont be colliding in the next frame	
 				collidedWithAi = false;
 				float relativeIntersectY =  paddleAi.transform.localPosition.y - transform.localPosition.y;	
-				float normalizeRelativeIntersectionY = (relativeIntersectY / (playerPaddleHeight /2));
+				float normalizeRelativeIntersectionY = (relativeIntersectY / (playerPaddleHeight /1.8f));
 
 				bounceAngle = normalizeRelativeIntersectionY * (maxAngle * Mathf.Deg2Rad);
 				
