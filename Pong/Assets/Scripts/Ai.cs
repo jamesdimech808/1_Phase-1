@@ -14,65 +14,106 @@ public class Ai : MonoBehaviour {
 	public float moveSpeed = 8.0f;
 	public float topBounds = 8.3f;
 	public float bottomBounds = -8.3f;
-
-	//for the starting position, we changed the value to positive 13...
-	//instead of negative. 
+	//for the starting position, we changed the value to positive 13 instead of negative. 
 	public Vector2 startingPosition = new Vector2 (13.0f, 0.0f);
+
+	private GameObject ball;
+	private Vector2 ballPos;
 
 
 	// Use this for initialization
 	void Start () {
 
-	transform.localPosition = (Vector3)startingPosition;		
+		transform.localPosition = (Vector3)startingPosition;	
+
 	}
 	
-	// Update is called once per frame
 	void Update () {
 
-		//Call the method
-		CheckUserInput ();
+		Move ();
 
 	}
 
-	void CheckUserInput () {
-		
-		// check if the user is pressing Up or Down
+	void Move () {
 
-		if (Input.GetKey (KeyCode.UpArrow)) {
+		if (!ball)
+			ball = GameObject.FindGameObjectWithTag ("ball");
 
-			
-			//Part 4 - added an '=' with the '>' to keep the paddle...
-			//from bouncing when the player holds the up key at the...
-			//boundary limit.
-			if (transform.localPosition.y >= topBounds) {
-				
-				//check to see if while we are moving up, 
-				//if we are passed the topBounds. 
-				transform.localPosition = new Vector3 (transform.localPosition.x, topBounds, transform.localPosition.z);
-			
-			} else {
-				//otherwise, we are going to allow the paddle to move
-				transform.localPosition += Vector3.up * moveSpeed * Time.deltaTime;
+		if (ball.GetComponent<Ball> ().ballDirection == Vector2.right) {
+
+			ballPos = ball.transform.localPosition;
+
+			if (transform.localPosition.y > bottomBounds && ballPos.y < transform.localPosition.y) {
+
+				transform.localPosition += new Vector3 (0, -moveSpeed * Time.deltaTime, 0);
 
 			}
 
-		} else if (Input.GetKey (KeyCode.DownArrow)) {
+			if (transform.localPosition.y < topBounds && ballPos.y > transform.localPosition.y) {
 
-			//opposite for the bottom boundary
-
-
-			//Part 4 - added an '=' with the '<' to keep the paddle...
-			//from bouncing when the player holds the down key at the...
-			//boundary limit.
-			if (transform.localPosition.y <= bottomBounds) {
-				
-				transform.localPosition = new Vector3 (transform.localPosition.x, bottomBounds, transform.localPosition.z);
-			
-			} else {
-
-				transform.localPosition += Vector3.down * moveSpeed * Time.deltaTime;
+				transform.localPosition += new Vector3 (0, moveSpeed * Time.deltaTime, 0);
 
 			}
+		} 
+
+	}
+
+
+
+	/*  !!!Part 15 - Now that the collision detection is done,
+	I am commenting-out the code which allows us to manipulate
+	the AI_Paddle so that we can add some "artificial intelligence" 
+	to the gameplay!!!
+	
+		// Update is called once per frame
+		void Update () {
+
+			//Call the method
+			CheckUserInput ();
+
 		}
-	}
+
+		void CheckUserInput () {
+			
+			// check if the user is pressing Up or Down
+
+			if (Input.GetKey (KeyCode.UpArrow)) {
+
+				
+				//Part 4 - added an '=' with the '>' to keep the paddle...
+				//from bouncing when the player holds the up key at the...
+				//boundary limit.
+				if (transform.localPosition.y >= topBounds) {
+					
+					//check to see if while we are moving up, 
+					//if we are passed the topBounds. 
+					transform.localPosition = new Vector3 (transform.localPosition.x, topBounds, transform.localPosition.z);
+				
+				} else {
+					//otherwise, we are going to allow the paddle to move
+					transform.localPosition += Vector3.up * moveSpeed * Time.deltaTime;
+
+				}
+
+			} else if (Input.GetKey (KeyCode.DownArrow)) {
+
+				//opposite for the bottom boundary
+
+
+				//Part 4 - added an '=' with the '<' to keep the paddle...
+				//from bouncing when the player holds the down key at the...
+				//boundary limit.
+				if (transform.localPosition.y <= bottomBounds) {
+					
+					transform.localPosition = new Vector3 (transform.localPosition.x, bottomBounds, transform.localPosition.z);
+				
+				} else {
+
+					transform.localPosition += Vector3.down * moveSpeed * Time.deltaTime;
+
+				}
+			}
+		} 
+		
+	*/
 }

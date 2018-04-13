@@ -13,8 +13,10 @@ public class Ball : MonoBehaviour {
 	//Have the ball move left when initiated. 
 	public Vector2 ballDirection = Vector2.left;
 
+	//top wall boundary - Y coordinate
 	public float topBounds = 9.4f;
 	
+	//bottom wall boundary - Y coordinate(negative)
 	public float bottomBounds = -9.4f;
 
 	//variables to help set up the prefabs for collisions etc...
@@ -124,7 +126,7 @@ public class Ball : MonoBehaviour {
 			return true;
 		
 		}
-
+		//bottom bounds collision detection
 		if (transform.localPosition.y < bottomBounds) {
 			transform.localPosition = new Vector3 (transform.localPosition.x, bottomBounds, transform.localPosition.z);
 			collidedWithWall = true;
