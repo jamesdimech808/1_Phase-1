@@ -18,8 +18,20 @@ public class Ball : MonoBehaviour {
 
 	private GameObject paddlePlayer, paddleAi;
 
+	//specifies what angle the ball should bounce from
+	private float bounceAngle;
+
+	//grid coordinates which our ball will travel too
+	private float vx, vy;
+
+	//maximum angle of deflection our ball is allowed to travel in
+	private float maxAngle = 45.0f;
+
 	// Use this for initialization
 	void Start () {
+
+		if (moveSpeed < 0)
+			moveSpeed = -1 * moveSpeed;
 
 		paddlePlayer = GameObject.Find ("player_paddle");
 		paddleAi = GameObject.Find ("ai_paddle");
@@ -45,6 +57,13 @@ public class Ball : MonoBehaviour {
 		//we will set our maxY and minY in the update method because the paddles...
 		//are constantly moving and the value is always changing. 
 
+		//can be left blank to use the default angles...
+		//unless you want to specify.
+		bounceAngle = GetRandomBounceAngle ();
+
+		//will return x and y coordinates from angles. 
+		vx = moveSpeed * Mathf.Cos (bounceAngle);
+		vy = moveSpeed * -Mathf.Sin (bounceAngle);
 	}
 	
 	// Update is called once per frame
@@ -96,10 +115,38 @@ public class Ball : MonoBehaviour {
 	void Move () {
 
 		if(!CheckCollision ()) {
-			
-		transform.localPosition += (Vector3)ballDirection * moveSpeed * Time.deltaTime;
 
+			//for x - caluclate the bounce angle x movespeed 
+			vx = moveSpeed * Mathf.Cos (bounceAngle);
+			
+			//for y - caluclate the angle based on whether the movement speed is positive or negative. 
+			if (moveSpeed < 0)
+				vy = moveSpeed * -Mathf.Sin (bounceAngle);
+			else 
+				vy = moveSpeed * Mathf.Sin (bounceAngle);
+
+		//altered the synthax because the ball is going to be going either in a pos or neg X and will only go left or right...
+		//for the Y axis because it depends only on which paddle it hits. 
+		transform.localPosition += new Vector3 (ballDirection.x * vx * Time.deltaTime, vy * Time.deltaTime, 0);
+		
+		} else {
+
+			 if (moveSpeed < 0)
+				moveSpeed = -1 * moveSpeed; 
+
+			float relativeIntersectY =  paddlePlayer.transform.localPosition.y - transform.localPosition.y;	
 		}
+	}
+
+	float GetRandomBounceAngle (float minDegrees = 160f, float maxDegrees = 260f) {
+		
+		//we need to convert the values into radians so our sine and cosine formulaes can...
+		//output the x and y coordinates. 
+		float minRad = minDegrees * Mathf.PI /180;
+		float maxRad = maxDegrees * Mathf.PI /180;
+
+		//will return the actual bounce angle. 
+		return Random.Range (minRad, maxRad);
 	}
 
 
