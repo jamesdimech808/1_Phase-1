@@ -1,0 +1,11 @@
+This 4th error was the score going up 9 points
+whenever the ball passed the player paddle or ai 
+paddle. The reason was this was because the collision
+detection calculates from the centre of the paddle to
+edge(right for player paddle and left for ai paddle)
+and the ball takes 9 frames to go from the edge of
+the paddle to the centre. This in turn fools the computer
+into thinking the ball passed 9 times. 
+
+The reason this was occuring was because we need to call
+this function once and stop. 

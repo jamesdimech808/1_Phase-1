@@ -1,0 +1,10 @@
+Close to the end of the development, i tried to test game 
+state functionality, such as starting and restarting the 
+game using the spacebar. The trouble was the ball was not
+respawning when it reached the goal. I kept getting a nullreference exception error.
+
+The reason was because i used this specific if statement for the
+different types of gamestates, but forgot to remove "game." because
+it wasn't required. Simply removing this solved the issue. 
+
+This was the solution to my final major error. 

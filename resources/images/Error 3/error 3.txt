@@ -1,0 +1,9 @@
+While setting up the scores, when i was attempting to test the game out
+my paddles kept dissapearing everytime i initialized the game. They were
+vanishing visually, not physicially. Which meant that the ball still bounced 
+off of them. 
+
+The reason this was happening was because in the Sprite Renderer in the inspecter,
+the order in layer was set to 0. 
+
+Changing the value to 2 solved my issue and the paddles started appreading like intended. 

@@ -1,0 +1,10 @@
+One of the first errors I experienced was when i was attempting to 
+set up the paddles so that i could move both simultaneously to code
+and test the colission detection. 
+
+Since Both the Player Paddle and the AI Paddle where going to move 
+with the same controls, I simply copied and pasted the player paddle
+code into the ai paddle script. When i saved and tried running the game
+I kept getting an error. 
+
+Turns out, i forgot to change the class from Player to AI.

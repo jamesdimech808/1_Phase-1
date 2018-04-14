@@ -1,0 +1,12 @@
+In my second major error my issue was that the collision detection
+was initiating a little too soon and it made it seem as though there 
+is an invisible wall in the field. 
+
+The reason this was happening was because the topBounds and bottomBounds
+values where set 4 points to soon, and had too change the values. 
+
+To figure out exactly what the value is, i quickly dropped the ball prefab
+into the game and slowly moved it towards the desired boundary points while 
+checking the Y axis in the inspector. 
+
+Changing the values solved this issue. 
