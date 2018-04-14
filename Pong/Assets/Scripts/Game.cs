@@ -18,7 +18,7 @@ public class Game : MonoBehaviour {
 
 	private GameObject paddleAi;
 
-	public int winningScore = 2;
+	public int winningScore = 10;
 	
 	private Game game;
 

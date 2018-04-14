@@ -19,6 +19,15 @@ public class Ball : MonoBehaviour {
 	//bottom wall boundary - Y coordinate(negative)
 	public float bottomBounds = -9.4f;
 
+	//the amount of time that will pass before the speed of the ball increases
+	public int speedIncreaseInterval = 20;
+	//after 20 seconds the ball will increase by 1, 
+	//therefore if default speed is 12... then after 20 seconds,
+	//the speed will increase to 13...
+	public float speedIncreaseBy = 1.0f;
+	//keep track of the current time since the last time the speed has increased
+	private float speedIncreaseTimer = 0;
+
 	//variables to help set up the prefabs for collisions etc...
 	private float playerPaddleHeight, playerPaddleWidth, aiPaddleHeight, aiPaddleWidth, playerPaddleMaxX, playerPaddleMaxY, playerPaddleMinX, playerPaddleMinY, aiPaddleMaxX, aiPaddleMaxY, aiPaddleMinX, aiPaddleMinY, ballWidth, ballHeight;
 
@@ -38,6 +47,8 @@ public class Ball : MonoBehaviour {
 	private Game game;
 
 	private bool assignPoint;
+
+
 
 	// Use this for initialization
 	void Start () {
@@ -87,7 +98,26 @@ public class Ball : MonoBehaviour {
 		if(game.gameState != Game.GameState.paused) {
 
 		Move ();
+
+		UpdateSpeedIncrease ();
 		}
+	}
+
+	void UpdateSpeedIncrease () {
+	
+		if (speedIncreaseTimer >= speedIncreaseInterval) {
+
+			speedIncreaseTimer = 0;
+			
+			if (moveSpeed > 0)
+				moveSpeed += speedIncreaseBy;
+			else 
+				moveSpeed -= speedIncreaseBy;
+		} else {
+
+			speedIncreaseTimer += Time.deltaTime;
+		}
+	
 	}
 
 	//We want to know if the ball collided with either of the paddles

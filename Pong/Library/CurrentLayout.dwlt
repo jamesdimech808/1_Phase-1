@@ -70,7 +70,7 @@ MonoBehaviour:
   m_MinSize: {x: 234, y: 492}
   m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 94
+  controlID: 96
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 421}
   m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 116
+  controlID: 118
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -312,9 +312,9 @@ MonoBehaviour:
     height: 498
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 84050000
+    m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 1afcffff00000000
+    m_ExpandedIDs: dc90fdff8891fdff8c92fdffe499fdff529afdff569bfdffe69ffdff54a0fdff58a1fdff38d5fdffa6d5fdffaad6fdffeadffdff58e0fdff5ce1fdffaae9fdff18eafdff1cebfdffa2fbfdff50fcfdff54fdfdff6c02feffda02feffde03feffb00ffeff1e10feff2211feffa269feff506afeff546bfeff1afcffff000000009c260000902b00005a2d0000fa2f00004a3100009a320000ea330000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -408,19 +408,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts
+    - Assets/Resources/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Resources/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\User\Google Drive\School\2017-2018\Semester 2\8_Game
     Engines_1\0_Assignment\1_Phase 1\Pong
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 24260000
-    m_LastClickedID: 9764
+    m_SelectedIDs: 22260000
+    m_LastClickedID: 9762
     m_ExpandedIDs: 000000001826000028260000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -530,7 +530,7 @@ MonoBehaviour:
     y: 596
     width: 1098
     height: 399
-  m_MaximizeOnPlay: 0
+  m_MaximizeOnPlay: 1
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 02000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -607,14 +607,14 @@ MonoBehaviour:
     width: 1098
     height: 466
   m_SceneLighting: 1
-  lastFramingTime: 1401.838379488425
+  lastFramingTime: 3283.206677283858
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 123.5, y: 194, z: 0}
+    m_Target: {x: 168.60626, y: 191, z: 0}
     speed: 2
-    m_Value: {x: 123.5, y: 194, z: 0}
+    m_Value: {x: 168.60626, y: 191, z: 0}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -641,9 +641,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 521.77576
+    m_Target: 331.97986
     speed: 2
-    m_Value: 521.77576
+    m_Value: 331.97986
   m_Ortho:
     m_Target: 1
     speed: 2
