@@ -345,6 +345,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 079a0a91f53a58f4d8dd00cacc8268fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winningScore: 2
+  gameState: 3
 --- !u!4 &326861386
 Transform:
   m_ObjectHideFlags: 0
@@ -397,6 +399,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 212964255783057368, guid: 15cf1d41c1d29e84883562b72436f588,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114983582260643612, guid: 15cf1d41c1d29e84883562b72436f588,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15cf1d41c1d29e84883562b72436f588, type: 2}
   m_IsPrefabParent: 0
@@ -437,6 +449,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4018233471331628, guid: bf8988a0cc0db8640b0d3ad410667a52, type: 2}
       propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212344336583008604, guid: bf8988a0cc0db8640b0d3ad410667a52,
+        type: 2}
+      propertyPath: m_SortingOrder
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -504,7 +521,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1135300831}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -530,7 +547,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: WIN
 --- !u!222 &1135300834
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -801,6 +818,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61e16cf9bbb6cfd48b10210474b0852c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScore: {fileID: 309291659}
+  aiScore: {fileID: 192785181}
+  winPlayer: {fileID: 1135300833}
+  winAi: {fileID: 2134045020}
+  playAgain: {fileID: 1980331903}
 --- !u!114 &1998861746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,7 +944,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2134045018}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -948,7 +970,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: WIN
 --- !u!222 &2134045021
 CanvasRenderer:
   m_ObjectHideFlags: 0

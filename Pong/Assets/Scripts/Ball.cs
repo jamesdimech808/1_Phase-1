@@ -35,8 +35,14 @@ public class Ball : MonoBehaviour {
 
 	private bool collidedWithPlayer, collidedWithAi, collidedWithWall;
 
+	private Game game;
+
+	private bool assignPoint;
+
 	// Use this for initialization
 	void Start () {
+		//Part 17 - searches for the Game script
+		game = GameObject.Find ("Game").GetComponent<Game> ();
 
 		if (moveSpeed < 0)
 			moveSpeed = -1 * moveSpeed;
@@ -77,8 +83,11 @@ public class Ball : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
+		if(game.gameState != Game.GameState.paused) {
+
 		Move ();
-	
+		}
 	}
 
 	//We want to know if the ball collided with either of the paddles
@@ -105,6 +114,14 @@ public class Ball : MonoBehaviour {
 				transform.localPosition = new Vector3 (playerPaddleMaxX + ballWidth / 1.8f, transform.localPosition.y, transform.localPosition.z);
 				return true;
 
+			} else {
+				//part 17 - calls the game script point methods, if there is no collision, 
+				//add a point. 
+				if (!assignPoint) {
+					assignPoint = true;
+					game.aiPoint ();
+				}
+
 			}
 		}
 		//this will check if the ball collides with the ai_paddle. 
@@ -116,6 +133,13 @@ public class Ball : MonoBehaviour {
 				collidedWithAi = true;
 				transform.localPosition = new Vector3 (aiPaddleMaxX - ballWidth / 1.8f, transform.localPosition.y, transform.localPosition.z);
 				return true;
+			} else {
+				//part 17 - calls the game script point methods, if there is no collision, 
+				//add a point. 
+				if (!assignPoint) {
+					assignPoint = true;
+					game.playerPoint ();
+				}
 			}
 		}
 		//top bounds collision detection
@@ -136,7 +160,7 @@ public class Ball : MonoBehaviour {
 
 		return false;
 	}
-
+	//collision detection
 	void Move () {
 
 		if(!CheckCollision ()) {
@@ -187,7 +211,7 @@ public class Ball : MonoBehaviour {
 			}
 		}
 	}
-
+	//calculations to make the ball bounce at angles
 	float GetRandomBounceAngle (float minDegrees = 160f, float maxDegrees = 260f) {
 		
 		//we need to convert the values into radians so our sine and cosine formulaes can...

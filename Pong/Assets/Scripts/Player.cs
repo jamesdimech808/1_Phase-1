@@ -12,18 +12,28 @@ public class Player : MonoBehaviour {
 	public float bottomBounds = -8.3f;
 	public Vector2 startingPosition = new Vector2 (-13.0f, 0.0f);
 
+	private Game game;
 
 	// Use this for initialization
 	void Start () {
 
-	transform.localPosition = (Vector3)startingPosition;		
+
+		game = GameObject.Find ("Game").GetComponent<Game> ();
+		transform.localPosition = (Vector3)startingPosition;		
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		//Call the method
-		CheckUserInput ();
+
+		if (game.gameState == Game.GameState.playing) {
+
+			//Call the method
+			CheckUserInput ();
+		
+		}
+
 
 	}
 

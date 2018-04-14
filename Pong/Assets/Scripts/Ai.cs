@@ -20,17 +20,24 @@ public class Ai : MonoBehaviour {
 	private GameObject ball;
 	private Vector2 ballPos;
 
+	private Game game;
 
 	// Use this for initialization
 	void Start () {
-
+		
+		game = GameObject.Find ("Game").GetComponent<Game> ();
 		transform.localPosition = (Vector3)startingPosition;	
 
 	}
 	
 	void Update () {
 
-		Move ();
+		if (game.gameState == Game.GameState.playing) {
+
+			Move ();
+
+		}
+		
 
 	}
 
